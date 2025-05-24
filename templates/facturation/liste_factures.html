@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Liste des factures</h2>
+
+<a href="{% url 'facturation:ajouter_facture' %}" class="btn btn-success mb-3">Nouvelle facture</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Montant</th>
+            <th>Payée</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for facture in factures %}
+        <tr>
+            <td>{{ facture.patient }}</td>
+            <td>{{ facture.date }}</td>
+            <td>{{ facture.montant }} €</td>
+            <td>{{ facture.est_payee|yesno:"Oui,Non" }}</td>
+            <td>
+                <a href="{% url 'facturation:modifier_facture' facture.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{% url 'facturation:supprimer_facture' facture.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">Aucune facture enregistrée.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

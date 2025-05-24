@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Détails du patient : {{ patient.user.get_full_name }}</h2>
+<p><strong>Nom :</strong> {{ patient.nom }}</p>
+<p><strong>Date de naissance :</strong> {{ patient.date_naissance }}</p>
+<p><strong>email :</strong> {{ patient.email }}</p>
+<p><strong>Téléphone :</strong> {{ patient.telephone }}</p>
+<p><strong>Groupe sanguin :</strong> {{ patient.groupe_sanguin }}</p>
+
+<h3>Dossier Médical</h3>
+{% if dossier %}
+    <p><strong>Antécédents :</strong> {{ dossier.antecedents }}</p>
+    <p><strong>Traitements :</strong> {{ dossier.traitements }}</p>
+    <p><strong>Prescriptions :</strong> {{ dossier.prescriptions }}</p>
+    <p><strong>Résultats des tests :</strong> {{ dossier.resultats_tests }}</p>
+{% else %}
+    <p>Aucun dossier médical trouvé.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Détails du médecin</h2>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ medecin.nom }} {{ medecin.prenom }}</h4>
+            <p class="card-text"><strong>Spécialité :</strong> {{ medecin.specialite }}</p>
+            <p class="card-text"><strong>Email :</strong> {{ medecin.email }}</p>
+            <p class="card-text"><strong>Téléphone :</strong> {{ medecin.telephone }}</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'medecins:modifier_medecin' medecin.id %}" class="btn btn-warning">Modifier</a>
+        <a href="{% url 'medecins:supprimer_medecin' medecin.id %}" class="btn btn-danger">Supprimer</a>
+        <a href="{% url 'medecins:liste_medecins' %}" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</div>
+{% endblock %}

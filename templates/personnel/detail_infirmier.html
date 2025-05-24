@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Détails de l'infirmier</h2>
+    <div class="card p-4">
+        <p><strong>Nom :</strong> {{ infirmier.nom }}</p>
+        <p><strong>Prénom :</strong> {{ infirmier.prenom }}</p>
+        <p><strong>Email :</strong> {{ infirmier.email }}</p>
+        <p><strong>Téléphone :</strong> {{ infirmier.telephone }}</p>
+    </div>
+    <a href="{% url 'personnel:liste_infirmier' %}" class="btn btn-primary mt-3">Retour à la liste</a>
+</div>
+{% endblock %}

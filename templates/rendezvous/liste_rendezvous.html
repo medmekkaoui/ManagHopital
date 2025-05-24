@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Liste des rendez-vous</h2>
+<a href="{% url 'rendezvous:ajouter_rendezvous' %}" class="btn btn-success mb-2">Ajouter un rendez-vous</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Médecin</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rdv in rendezvous %}
+        <tr>
+            <td>{{ rdv.patient }}</td>
+            <td>{{ rdv.medecin }}</td>
+            <td>{{ rdv.date }}</td>
+            <td>{{ rdv.heure }}</td>
+            <td>{{ rdv.description }}</td>
+            <td>
+                <a href="{% url 'rendezvous:modifier_rendezvous' rendezvous.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{% url 'rendezvous:supprimer_rendezvous' rendezvous.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">Aucun rendez-vous trouvé.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

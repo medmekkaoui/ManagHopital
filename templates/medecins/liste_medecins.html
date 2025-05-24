@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Liste des médecins</h2>
+    <a href="{% url 'medecins:ajouter_medecins' %}" class="btn btn-success mb-3">Ajouter un médecin</a>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Spécialité</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medecin in medecins %}
+            <tr>
+                <td>{{ medecin.nom }}</td>
+                <td>{{ medecin.prenom }}</td>
+                <td>{{ medecin.specialite }}</td>
+                <td>{{ medecin.email }}</td>
+                <td>{{ medecin.telephone }}</td>
+                <td>
+                    <a href="{% url 'medecins:detail_medecins' medecin.id %}" class="btn btn-info btn-sm">Détail</a>
+                    <a href="{% url 'medecins:modifier_medecin' medecin.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a href="{% url 'medecins:supprimer_medecin' medecin.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Aucun médecin trouvé.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

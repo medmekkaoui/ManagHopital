@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Équipements</h2>
+<ul>
+    {% for e in equipements %}
+    <li>{{ e.nom }} - {{ e.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

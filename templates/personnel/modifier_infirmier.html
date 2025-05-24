@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Modifier l'Infirmier</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom :</label>
+            <input type="text" id="nom" name="nom" class="form-control" value="{{ infirmier.nom }}">
+        </div>
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" class="form-control" value="{{ infirmier.prenom }}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email :</label>
+            <input type="email" id="email" name="email" class="form-control" value="{{ infirmier.email }}">
+        </div>
+        <div class="mb-3">
+            <label for="telephone" class="form-label">Téléphone :</label>
+            <input type="text" id="telephone" name="telephone" class="form-control" value="{{ infirmier.telephone }}">
+        </div>
+        <button type="submit" class="btn btn-success">Mettre à jour</button>
+        <a href="{% url 'personnel:liste_infirmier' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

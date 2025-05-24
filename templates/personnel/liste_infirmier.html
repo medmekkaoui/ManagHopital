@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Liste des Infirmiers</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for infirmier in infirmiers %}
+        <tr>
+            <td>{{ infirmier.nom }}</td>
+            <td>{{ infirmier.prenom}}</td>
+            <td>{{ infirmier.email }}</td>
+            <td>{{ infirmier.telephone }}</td>
+            <td>
+                <a href="{% url 'personnel:detail_infirmier' infirmier.id %}" class="btn btn-info btn-sm">Détails</a>
+                <a href="{% url 'personnel:modifier_infirmier' infirmier.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{% url 'personnel:supprimer_infirmier' infirmier.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Aucun infirmier trouvé.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'personnel:ajouter_infirmier' %}" class="btn btn-success">Ajouter un infirmier</a>
+
+{% endblock %}
